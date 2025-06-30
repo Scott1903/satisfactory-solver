@@ -18,8 +18,8 @@ jobs:
         with:
           python-version: '3.11'
 
-#      - name: Install dependencies
-#        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Zip artifact
         run: zip -r release.zip . -x "*.git*" "venv/*" "__pycache__/*"
