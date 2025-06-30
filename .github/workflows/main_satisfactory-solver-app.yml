@@ -28,10 +28,6 @@ jobs:
           echo "SECRET_KEY=dummy" >> $GITHUB_ENV
           echo "DEBUG=False" >> $GITHUB_ENV
 
-      - name: Collect static files
-        run: |
-          python manage.py collectstatic --noinput
-
       - name: Prepare deployment package
         run: |
           mkdir build
