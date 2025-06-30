@@ -17,7 +17,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'satisfactory-solver.com',
     'www.satisfactory-solver.com',
-    'https://satisfactory-solver-app-cjffhbd9cxgwcyd4.centralus-01.azurewebsites.net'
+    'satisfactory-solver-app-cjffhbd9cxgwcyd4.centralus-01.azurewebsites.net',
 ]
 
 
