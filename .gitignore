@@ -1,23 +1,24 @@
-# .gitignore
 # Python
 *.pyc
 __pycache__/
 env/
 venv/
 *.sqlite3
+*.log
 
-# Node
+# Node & React
 node_modules/
+frontend/build/
+
+# Build artifacts
 build/
 dist/
-
-# VS Code
-.vscode/
-.DS_Store
+release.zip
 
 # Django
-*.log
 staticfiles/
 
-frontend/build/
-backend/staticfiles/
+# IDE/editor
+.vscode/
+.DS_Store
+.idea/

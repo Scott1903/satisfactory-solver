@@ -28,13 +28,13 @@ jobs:
           echo "SECRET_KEY=dummy" >> $GITHUB_ENV
           echo "DEBUG=False" >> $GITHUB_ENV
 
-      - name: Prepare deployment package
+      - name: Collect static files
         run: |
-          mkdir build
-          rsync -av --exclude=build --exclude=python_packages . build/
-          cp -r python_packages build/
-          cd build
-          zip -r ../release.zip .
+          python manage.py collectstatic --noinput
+
+      - name: Prepare deployment package from root
+        run: |
+          zip -r release.zip . -x "*.git*" "venv/*" "python_packages/*"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
