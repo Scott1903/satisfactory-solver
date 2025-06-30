@@ -63,3 +63,4 @@ jobs:
           app-name: 'satisfactory-solver-app'
           slot-name: 'Production'
           package: .
+          startup-command: 'gunicorn optimizer_backend.wsgi:application'
