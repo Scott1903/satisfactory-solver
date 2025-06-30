@@ -25,10 +25,15 @@ class FrontendAppView(TemplateView):
 
 class OptimizeView(APIView):
     def post(self, request):
-        settings = request.data.get('settings')
-        data = load_data()
-        result = optimize_production(data, settings)
-        return Response(result)
+        try:
+            settings = request.data.get('settings')
+            print("Received settings:", settings)
+            data = load_data()
+            result = optimize_production(data, settings)
+            return Response(result)
+        except Exception as e:
+            print("Optimization error:", str(e))
+            return Response({'error': str(e)}, status=500)
 
 
 def get_all_metadata(request):
