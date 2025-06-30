@@ -1,0 +1,23 @@
+# .gitignore
+# Python
+*.pyc
+__pycache__/
+env/
+venv/
+*.sqlite3
+
+# Node
+node_modules/
+build/
+dist/
+
+# VS Code
+.vscode/
+.DS_Store
+
+# Django
+*.log
+staticfiles/
+
+frontend/build/
+backend/staticfiles/
