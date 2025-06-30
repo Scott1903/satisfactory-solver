@@ -23,9 +23,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Zip artifact
-        run: |
-          cd backend
-          zip -r ../release.zip .
+        run: zip -r release.zip backend
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -63,4 +61,4 @@ jobs:
           app-name: 'satisfactory-solver-app'
           slot-name: 'Production'
           package: .
-          startup-command: 'gunicorn optimizer_backend.wsgi:application'
+          startup-command: 'gunicorn optimizer_backend.wsgi:application --chdir backend'

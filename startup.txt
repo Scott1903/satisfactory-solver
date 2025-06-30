@@ -1,1 +1,0 @@
-gunicorn optimizer_backend.wsgi:application
