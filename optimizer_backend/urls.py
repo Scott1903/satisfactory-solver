@@ -1,15 +1,18 @@
+from django.contrib import admin
 from django.urls import path, re_path
-from optimizer import views  # Import views from the optimizer app
+from optimizer.views import (
+    OptimizeView,
+    get_all_metadata,
+    get_default_settings,
+    FrontendAppView
+)
 
 urlpatterns = [
-    path("optimize/", views.OptimizeView.as_view(), name="optimize"),
-    path("api/metadata/", views.get_all_metadata, name="get_all_metadata"),
-    path("api/default-settings/", views.get_default_settings, name="get_default_settings"),
-    re_path(r'^.*$', views.index, name="frontend"),  # fallback route to serve React
+    path('admin/', admin.site.urls),
+    path('optimize/', OptimizeView.as_view(), name='optimize'),
+    path('api/metadata/', get_all_metadata, name='metadata'),
+    path('api/default-settings/', get_default_settings, name='default-settings'),
+
+    # Catch-all for React routes (must come last)
+    re_path(r'^.*$', FrontendAppView.as_view(), name='frontend'),
 ]
-
-# For development only
-from django.conf import settings
-from django.conf.urls.static import static
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
