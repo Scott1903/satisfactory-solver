@@ -85,13 +85,13 @@ def index(request):
 
 ## 📝 To Do
 
-- [x] React weights tooltip hover text
-- [x] Align input boxes and tooltips
-- [x] Add footer and branding
-- [x] Django serve built React app
-- [ ] Enable settings export/save
-- [ ] Add user login for saved configs
+- [x] Move project to new repo
+- [x] Build backend with Django
+- [x] Build frontend with React
+- [x] Serve React app with Django
 - [ ] Deploy with custom domain (e.g., satisfactory-solver.com)
+- [ ] Add user login for saved configs
+- [ ] Enable settings export/save
 
 ---
 
