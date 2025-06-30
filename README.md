@@ -1,22 +1,22 @@
-# 🛠️ Satisfactory LP Solver
+# Satisfactory LP Solver
 
-**Satisfactory LP Solver** is a full-stack web application for optimizing production chains in the game *Satisfactory*, using linear programming (LP). The app allows users to configure item inputs and outputs and tune objective weights with resource and building constraints.
+**Satisfactory LP Solver** is a full-stack web application for optimizing production chains in the game *[Satisfactory](https://www.satisfactorygame.com/)*, using linear programming (LP). The app allows users to configure item inputs and outputs and tune objective weights with resource and building constraints.
 
 > Created by [u/wrigh516](https://www.reddit.com/user/wrigh516)
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🔄 Interactive React frontend with real-time configuration
-- 🧠 Django backend with LP-based optimization logic
-- ✅ Dynamic recipe toggles and nuclear waste handling
-- ⚙️ Weighted controls for power, items, buildings, and rare resources
-- 📊 Print overall optimization results, resources needed, and recipes used
+- Interactive React frontend with real-time configuration
+- Django backend with LP-based optimization logic
+- Dynamic recipe toggles and nuclear waste handling
+- Weighted controls for power, items, buildings, and rare resources
+- Print overall optimization results, resources needed, and recipes used
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer     | Technology                    |
 |-----------|-------------------------------|
@@ -27,9 +27,9 @@
 
 ---
 
-## 🖥️ Running Locally
+## Running Locally
 
-### 🔧 Backend Setup
+### Backend Setup
 
 ```bash
 cd backend
@@ -43,7 +43,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### 🌐 Frontend Setup
+### Frontend Setup
 
 ```bash
 cd frontend
@@ -58,7 +58,7 @@ Open your browser to:
 
 ---
 
-## 📦 Production Deployment
+## Production Deployment
 
 To host the app on a server like Azure:
 
@@ -83,7 +83,7 @@ def index(request):
 
 ---
 
-## 📝 To Do
+## To Do
 
 - [x] Move project to new repo
 - [x] Build backend with Django
@@ -95,7 +95,7 @@ def index(request):
 
 ---
 
-## 🤝 Contributions
+## Contributions
 
 Pull requests are welcome! If you find a bug or want to contribute improvements, please fork the repo and submit a PR.
 
