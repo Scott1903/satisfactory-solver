@@ -22,6 +22,16 @@ jobs:
         run: |
           pip install -r requirements.txt -t python_packages
 
+      - name: Set environment variables for Django
+        run: |
+          echo "DJANGO_SETTINGS_MODULE=optimizer_backend.settings" >> $GITHUB_ENV
+          echo "SECRET_KEY=dummy" >> $GITHUB_ENV
+          echo "DEBUG=False" >> $GITHUB_ENV
+
+      - name: Collect static files
+        run: |
+          python manage.py collectstatic --noinput
+
       - name: Prepare deployment package
         run: |
           mkdir build
