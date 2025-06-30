@@ -12,14 +12,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-!6f+w0h(c8m3c1m5(04gg+o^b-8(@pvjn0un1w=l@&bnlku1z_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
     'satisfactory-solver.com',
     'www.satisfactory-solver.com',
     'satisfactory-solver-app-cjffhbd9cxgwcyd4.centralus-01.azurewebsites.net',
 ]
-
 
 # Application definition
 
