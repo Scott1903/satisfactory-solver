@@ -18,11 +18,17 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Install dependencies to local folder
+        run: |
+          pip install -r requirements.txt -t python_packages
 
-      - name: Zip artifact
-        run: zip -r release.zip . -x "*.git*" "venv/*" "__pycache__/*"
+      - name: Prepare deployment package
+        run: |
+          mkdir build
+          cp -r * build/
+          cp -r python_packages build/
+          cd build
+          zip -r ../release.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
