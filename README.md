@@ -2,7 +2,7 @@
 
 **Satisfactory LP Solver** is a full-stack web application for optimizing production chains in the game *[Satisfactory](https://www.satisfactorygame.com/)*, using linear programming (LP). The app allows users to configure item inputs and outputs and tune objective weights with resource and building constraints.
 
-> Created by [u/wrigh516](https://www.reddit.com/user/wrigh516)
+> Created by [u/wrigh516](https://www.reddit.com/user/wrigh516/submitted/)
 
 ---
 
