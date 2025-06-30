@@ -25,7 +25,7 @@ jobs:
       - name: Prepare deployment package
         run: |
           mkdir build
-          cp -r * build/
+          rsync -av --exclude=build --exclude=python_packages . build/
           cp -r python_packages build/
           cd build
           zip -r ../release.zip .
