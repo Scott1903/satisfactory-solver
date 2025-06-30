@@ -18,12 +18,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        working-directory: ./backend
-        run: pip install -r requirements.txt
+#      - name: Install dependencies
+#        run: pip install -r requirements.txt
 
       - name: Zip artifact
-        run: zip -r release.zip backend
+        run: zip -r release.zip . -x "*.git*" "venv/*" "__pycache__/*"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -44,7 +43,7 @@ jobs:
         with:
           name: python-app
 
-      - name: Unzip artifact into current directory
+      - name: Unzip artifact
         run: unzip -o release.zip -d .
 
       - name: Login to Azure
@@ -61,4 +60,4 @@ jobs:
           app-name: 'satisfactory-solver-app'
           slot-name: 'Production'
           package: .
-          startup-command: 'gunicorn optimizer_backend.wsgi:application --chdir backend'
+          startup-command: 'gunicorn optimizer_backend.wsgi:application'
