@@ -46,8 +46,8 @@ jobs:
         with:
           name: python-app
 
-      - name: Unzip artifact
-        run: unzip release.zip
+      - name: Unzip artifact into current directory
+        run: unzip -o release.zip -d .
 
       - name: Login to Azure
         uses: azure/login@v2
