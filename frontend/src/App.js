@@ -36,8 +36,8 @@ const App = () => {
     const fetchDefaultsAndMetadata = async () => {
       try {
         const [defaultRes, metaRes] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/default-settings/"),
-          axios.get("http://127.0.0.1:8000/api/metadata/")
+          axios.get("/api/default-settings/"),
+          axios.get("/api/metadata/")
         ]);
 
         const defaultData = defaultRes.data;
@@ -102,7 +102,7 @@ const App = () => {
     };
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/optimize/", { settings });
+      const response = await axios.post("/optimize/", { settings });
       setResult(response.data);
       setActiveTab('Results');
     } catch (error) {
