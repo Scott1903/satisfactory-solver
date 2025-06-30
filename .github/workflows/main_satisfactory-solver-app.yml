@@ -18,9 +18,14 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies to local folder
+      - name: Install dependencies into venv
         run: |
-          pip install -r requirements.txt -t python_packages
+          python -m venv venv
+          ./venv/bin/pip install --upgrade pip
+          ./venv/bin/pip install -r requirements.txt
+
+      - name: Add venv to PATH
+        run: echo "$GITHUB_WORKSPACE/venv/bin" >> $GITHUB_PATH
 
       - name: Set environment variables for Django
         run: |
@@ -29,8 +34,7 @@ jobs:
           echo "DEBUG=False" >> $GITHUB_ENV
 
       - name: Collect static files
-        run: |
-          python manage.py collectstatic --noinput
+        run: python manage.py collectstatic --noinput
 
       - name: Prepare deployment package from root
         run: |
