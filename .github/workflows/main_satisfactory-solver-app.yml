@@ -9,30 +9,25 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python version
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
         working-directory: ./backend
+        run: pip install -r requirements.txt
+
+      - name: Zip artifact
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          cd backend
+          zip -r ../release.zip .
 
-      # Optional: Run tests here (pytest etc.)
-
-      - name: Zip artifact for deployment
-        working-directory: ./backend
-        run: zip -r ../release.zip .
-
-      - name: Upload artifact for deployment
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: python-app
