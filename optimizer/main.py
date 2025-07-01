@@ -15,7 +15,7 @@ def optimize_production(data, settings):
         m.r[recipe].fix(0)
 
     # Solve the model
-    solver = SolverFactory('glpk', executable=os.path.join(os.getenv('GLPK_PATH'), 'glpsol.exe'))
+    solver = SolverFactory('glpk', executable=os.path.abspath('glpk-4.65/w64/glpsol.exe'))
     result = solver.solve(m)
     
     # Collect results
