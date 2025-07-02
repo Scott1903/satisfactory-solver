@@ -1,6 +1,7 @@
 from .model import create_model
 import os
-from pyomo.environ import *
+import platform
+from pyomo.environ import SolverFactory
 
 def optimize_production(data, settings):
     # Remove max_item from outputs if exists
@@ -14,8 +15,17 @@ def optimize_production(data, settings):
     for recipe in settings['recipes_off']:
         m.r[recipe].fix(0)
 
-    # Solve the model
-    solver = SolverFactory('glpk', executable=os.path.abspath('glpk-4.65/w64/glpsol.exe'))
+    # Choose solver path based on OS
+    if platform.system() == "Windows":
+        glpk_path = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), '..', 'glpk-4.65', 'w64', 'glpsol.exe')
+        )
+        solver = SolverFactory('glpk', executable=glpk_path)
+    else:
+        # Linux (e.g., Azure) expects glpsol to be installed in system PATH
+        solver = SolverFactory('glpk')
+
+    # Solve
     result = solver.solve(m)
     
     # Collect results

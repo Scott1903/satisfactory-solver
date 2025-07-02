@@ -18,22 +18,18 @@
 
 ## Tech Stack
 
-| Layer     | Technology                    |
-|-----------|-------------------------------|
-| Frontend  | React, Tailwind CSS           |
-| Backend   | Django, Django REST Framework |
+| Layer     | Technology                         |
+|-----------|------------------------------------|
+| Frontend  | React, Tailwind CSS                |
+| Backend   | Django, Django REST Framework      |
 | Optimizer | Python + Pyomo using 'glpk' solver |
-| Hosting   | Azure-ready or standalone     |
+| Hosting   | Local or Windows VM with Py 3.13   |
 
 ---
 
 ## Running Locally
 
-### Backend Setup
-
 ```bash
-cd backend
-python -m venv env
 env\Scripts\activate      # On Windows
 # OR
 source env/bin/activate   # On macOS/Linux
@@ -43,43 +39,16 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Open your browser to:
-
-- Frontend: `http://localhost:3000`
-- Backend API: `http://localhost:8000`
+- API: `http://localhost:8000`
 
 ---
 
-## Production Deployment
-
-To host the app on a server like Azure:
+## Pre-Deployment
 
 1. Run `npm run build` inside the `frontend/` folder.
-2. Place the resulting `build/` folder contents in your Django `static/` or `templates/` directory.
-3. Run:
-
-```bash
-python manage.py collectstatic
-```
-
-4. Update your Django view to serve `index.html`:
-
-```python
-from django.shortcuts import render
-
-def index(request):
-    return render(request, 'index.html')
-```
-
-5. Optionally configure a reverse proxy (e.g. Nginx) for production performance.
+2. Place the resulting `build/` js and css folders and contents into your Django `static/` directory.
+3. Place the resulting `build/` index.html file into your `templates/` directory.
+4. Note: glpk glpsol.exe requires a Windows machine or VM without Docker.
 
 ---
 
@@ -92,6 +61,19 @@ def index(request):
 - [ ] Deploy with custom domain (e.g., satisfactory-solver.com)
 - [ ] Add user login for saved configs
 - [ ] Enable settings export/save
+
+---
+
+## License Notice for GLPK
+
+This project includes the [GNU Linear Programming Kit (GLPK)](https://www.gnu.org/software/glpk/), version 4.65, distributed under the [GNU General Public License v3.0 (GPLv3)](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+- The `glpk-4.65/w64/glpsol.exe` binary is bundled for convenience when running the optimizer on Windows-based environments.
+- The original source code for GLPK is available at: https://ftp.gnu.org/gnu/glpk/
+
+If you distribute or modify this project, please ensure compliance with the terms of the GPLv3 as it applies to GLPK.
+
+---
 
 ---
 
