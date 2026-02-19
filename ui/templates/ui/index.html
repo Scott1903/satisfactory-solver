@@ -198,17 +198,17 @@
   </header>
 
   <div class="tabs">
-    <button id="tabbtn-Resources" class="active" onclick="setActiveTab('Resources')">Resources</button>
+    <button id="tabbtn-IO" class="active" onclick="setActiveTab('IO')">Inputs/Outputs</button>
+    <button id="tabbtn-Resources" onclick="setActiveTab('Resources')">Resources</button>
     <button id="tabbtn-Weights" onclick="setActiveTab('Weights')">Weights</button>
-    <button id="tabbtn-IO" onclick="setActiveTab('IO')">Inputs/Outputs</button>
     <button id="tabbtn-Recipes" onclick="setActiveTab('Recipes')">Recipes</button>
     <button id="tabbtn-Results" onclick="setActiveTab('Results')">Results</button>
   </div>
 
-  <div id="tab-Resources" class="section"></div>
+  <div id="tab-Resources" class="section hidden"></div>
   <div id="tab-Weights" class="section hidden"></div>
 
-  <div id="tab-IO" class="section hidden">
+  <div id="tab-IO" class="section">
     <div class="two-col">
       <div>
         <h3>Inputs</h3>
@@ -270,7 +270,7 @@
 
   <script>
   // ----------------- STATE -----------------
-  let activeTab = 'Resources';
+  let activeTab = 'IO';
 
   let resourceLimits = {};
   let defaultResourceLimits = {}; // <— model defaults for the ↺ buttons
@@ -800,7 +800,7 @@
     }catch(e){
       console.warn('Bootstrap failed:', e);
     }finally{
-      setActiveTab('Resources');
+      setActiveTab('IO');
     }
   })();
   </script>
