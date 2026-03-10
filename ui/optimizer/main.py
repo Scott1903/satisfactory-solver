@@ -1,6 +1,6 @@
 from .model import create_model
 import os, shutil
-from pyomo.opt import SolverFactory
+from pyomo.environ import SolverFactory
 
 def optimize_production(data, settings):
     # Remove max_item from outputs if exists
@@ -14,7 +14,13 @@ def optimize_production(data, settings):
     for recipe in settings['recipes_off']:
         m.r[recipe].fix(0)
 
-    solver = SolverFactory('highs')
+    solver = SolverFactory("appsi_highs")
+    try:
+        solver.options["log_to_console"] = False
+    except Exception:
+        pass
+    # optional stability tweak that mitigates APPSI output deadlocks
+    solver.options["log_to_console"] = False
 
     # Solve
     result = solver.solve(m)

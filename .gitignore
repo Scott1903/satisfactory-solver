@@ -11,3 +11,8 @@ db.sqlite3
 .vscode/
 .idea/
 .DS_Store
+tmp/
+AGENTS.md
+.venv/
+# dev TLS
+certs/*.pem

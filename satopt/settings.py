@@ -48,6 +48,8 @@ SECURE_HSTS_PRELOAD = True
 # --- Application definition ---
 INSTALLED_APPS = [
     'ui',
+    'sslserver',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
